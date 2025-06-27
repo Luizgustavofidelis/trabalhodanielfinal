@@ -95,10 +95,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div id="container">
     <table border="1">
         <tr>
-            <th>titulo</th>
-            <th>artista</th>
-            <th>datlancamento</th>
-            <th>duracao</th>
+            <th>Título</th>
+            <th>Artista</th>
+            <th>Data de Lançamento</th>
+            <th>Duração</th>
             <th>Excluir</th>
         </tr>
 
