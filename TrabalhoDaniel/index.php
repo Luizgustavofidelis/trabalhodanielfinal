@@ -103,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <h1>Cadastrar Música</h1>
 
-    <form action="card.php" method="post">
+    <form action="index.php" method="post">
         <label for="titulo">Título:</label><br>
         <input type="text" name="titulo" id="titulo" value="<?= htmlspecialchars($titulo) ?>">
         <span style="color:red"><?= $errorMessages['titulo'] ?></span>
