@@ -7,15 +7,17 @@ require_once("util/Conexao.php");
 $con = Conexao::getConexao();
 
 
-$titulo = $artista = $album = $genero = $datlancamento = $duracao = $url = '';
+$titulo = $artista = $tipo_lancamento = $genero = $datlancamento = $duracao = $url = '';
 $errorMessages = [
     'titulo' => '',
     'artista' => '',
+    'tipo_lancamento' => '',
     'genero' => '',
     'data_lancamento' => '',
     'duracao' => '',
     'url' => ''
 ];
+
 $sql = "SELECT * FROM Musica";
 $stm = $con->prepare($sql);
 $stm->execute();
@@ -25,18 +27,21 @@ $musicas = $stm->fetchAll();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $titulo = trim($_POST["titulo"] ?? '');
     $artista = trim($_POST["artista"] ?? '');
-    $album = trim($_POST["album"] ?? '');
+    $tipo_lancamento = trim($_POST["tipo_lancamento"] ?? '');
     $genero = trim($_POST["genero"] ?? '');
     $datlancamento = trim($_POST["data_lancamento"] ?? '');
     $duracao = trim($_POST["duracao"] ?? '');
     $url = trim($_POST["url"] ?? '');
 
-    
+
     if (empty($titulo)) {
         $errorMessages['titulo'] = 'Informe o título.';
     }
     if (empty($artista)) {
         $errorMessages['artista'] = 'Informe o artista.';
+    }
+    if (empty($tipo_lancamento)) {
+        $errorMessages['tipo_lancamento'] = 'Informe o tipo de lançamento.';
     }
     if (empty($genero)) {
         $errorMessages['genero'] = 'Informe o gênero.';
@@ -51,15 +56,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errorMessages['url'] = 'Informe a URL.';
     }
 
-    
+
     $temErros = array_filter($errorMessages);
 
-    
+
     if (empty($temErros)) {
-        $sql = "INSERT INTO Musica (titulo, artista, album, genero, data_lancamento, duracao, url) 
-                VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO Musica (titulo, artista, tipo_lancamento, genero, data_lancamento, duracao, url) 
+        VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stm = $con->prepare($sql);
-        $stm->execute([$titulo, $artista, $album, $genero, $datlancamento, $duracao, $url]);
+        $stm->execute([$titulo, $artista, $tipo_lancamento, $genero, $datlancamento, $duracao, $url]);
+
 
         header("Location: index.php");
         exit;
@@ -90,14 +96,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </tr>
 
         <?php foreach ($musicas as $m): ?>
-        <tr>
+            <tr>
 
-            <td><?= $m["titulo"] ?></td>
-            <td><?= htmlspecialchars($m["artista"]) ?></td>
-            <td><?= $m["data_lancamento"] ?></td>
-            <td><?= $m["duracao"] ?></td>
-            <td><a href="excluir.php?excluir=<?= $m["id"] ?>">Excluir</a></td>
-        </tr>
+                <td><?= $m["titulo"] ?></td>
+                <td><?= htmlspecialchars($m["artista"]) ?></td>
+                <td><?= $m["data_lancamento"] ?></td>
+                <td><?= $m["duracao"] ?></td>
+                <td><a href="excluir.php?excluir=<?= $m["id"] ?>">Excluir</a></td>
+            </tr>
         <?php endforeach; ?>
     </table>
 
@@ -114,14 +120,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <span style="color:red"><?= $errorMessages['artista'] ?></span>
         <br><br>
 
-        <label for="album">Álbum:</label><br>
-        <input type="text" name="album" id="album" value="<?= htmlspecialchars($album) ?>">
+        
+        <label for="tipo_lancamento">Tipo de Lançamento:</label><br>
+        <select name="tipo_lancamento" id="tipo_lancamento">
+            <option value="single">Single</option>
+            <option value="album">Álbum</option>
+            <option value="ep">EP</option>
+            <option value="soundtrack">Trilha Sonora</option>
+            <option value="live">Ao Vivo</option>
+        </select>
+        <span style="color:red"><?= $errorMessages['tipo_lancamento'] ?></span>
         <br><br>
 
-        <label for="genero">Gênero:</label><br>
-        <input type="text" name="genero" id="genero" value="<?= htmlspecialchars($genero) ?>">
+
+
+        <label for="genero">Genero:</label> <br>
+        <select name="genero" id="genero">
+            <option value="rock">Rock</option>
+            <option value="rap">Rap</option>
+            <option value="pop">Pop</option>
+            <option value="sertanejo">Sertanejo</option>
+            <option value="funk">Funk</option>
+            <option value="pagode">Pagode</option>
+        </select>
         <span style="color:red"><?= $errorMessages['genero'] ?></span>
-        <br><br>
+        <br>
 
         <label for="data_lancamento">Data de Lançamento:</label><br>
         <input type="date" name="data_lancamento" id="data_lancamento" value="<?= htmlspecialchars($datlancamento) ?>">

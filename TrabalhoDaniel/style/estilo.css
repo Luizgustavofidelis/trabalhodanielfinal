@@ -112,4 +112,34 @@ button[type="submit"]:hover {
 .botao-card:hover {
     background-color: #0077cc;
 }
+select#genero {
+    width: 250px;
+    padding: 8px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: #ffffff;
+    transition: border-color 0.3s ease;
+}
+
+select#genero:focus {
+    border-color: #007bff;
+    outline: none;
+    background-color: #fff;
+}
+select#tipo_lancamento {
+    width: 250px;
+    padding: 8px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: #ffffff;
+    transition: border-color 0.3s ease;
+}
+
+select#tipo_lancamento:focus {
+    border-color: #007bff;
+    outline: none;
+    background-color: #fff;
+}
 
