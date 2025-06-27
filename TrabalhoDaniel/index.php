@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="style/estilo.css">
 </head>
 
-<body>
+<body class="bg-dark text-white">
 <div id="header" class="container mt-4 mb-4">
     <div class="d-flex flex-column flex-md-row align-items-center justify-content-center gap-3">
         <img src="1e0c2610-bd29-4dea-8e9d-eb3931a6632a-removebg-preview.png" alt="Logo" style="max-height: 100px;">
@@ -109,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <td><?= $m["artista"] ?></td>
                 <td><?= $m["data_lancamento"] ?></td>
                 <td><?= $m["duracao"] ?></td>
-                <td><a href="excluir.php?excluir=<?= $m["id"] ?>">Excluir</a></td>
+                <td><a href="excluir.php?excluir=<?= $m["id"] ?>" style="color: red;">Excluir</a></td>
             </tr>
         <?php endforeach; ?>
     </table>
