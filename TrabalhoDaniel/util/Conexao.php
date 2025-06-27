@@ -15,7 +15,7 @@
                     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC);
                     
                     //Alterar de acordo com o seu banco de dados
-                self::$conn = new PDO("mysql:host=localhost;dbname=musica", "phpmyadmin", "phpmyadmin", $opcoes);
+                self::$conn = new PDO("mysql:host=localhost;dbname=musica", "root", "bancodedados", $opcoes);
             }
 
             return self::$conn;

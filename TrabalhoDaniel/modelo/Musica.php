@@ -157,15 +157,15 @@ class Musica
         {
                 echo "<div class='card h-100 bg-secondary text-white'>";
                 echo "<div class='card-body'>";
-                echo "<h5 class='card-title'>" . htmlspecialchars($this->getTitulo()) . "</h5>";
-                echo "<h6 class='card-subtitle mb-2 text-muted'>" . htmlspecialchars($this->getArtista()) . "</h6>";
+                echo "<h5 class='card-title'>" . $this->getTitulo() . "</h5>";
+                echo "<h6 class='card-subtitle mb-2 text-muted'>" . $this->getArtista() . "</h6>";
                 echo "<p class='card-text'>";
                 echo "<strong>Tipo de Lançamento:</strong> " . $this->obterTipoLancamento($this->getTipoLancamento()) . "<br>";
                 echo "<strong>Gênero:</strong> " . $this->obterGenero($this->getGenero()) . "<br>";
-                echo "<strong>Data de Lançamento:</strong> " . htmlspecialchars($this->getDataLancamento()) . "<br>";
-                echo "<strong>Duração:</strong> " . htmlspecialchars($this->getDuracao()) . " segundos<br>";
+                echo "<strong>Data de Lançamento:</strong> " . $this->getDataLancamento() . "<br>";
+                echo "<strong>Duração:</strong> " . $this->getDuracao() . " segundos<br>";
                 echo "</p>";
-                echo "<a href='" . htmlspecialchars($this->getUrl()) . "' class='btn btn-primary' target='_blank'><i class='bi bi-play-fill'></i> Ouvir</a>";
+                echo "<a href='" . $this->getUrl() . "' class='btn btn-primary' target='_blank'><i class='bi bi-play-fill'></i> Ouvir</a>";
                 echo "</div>";
                 echo "</div>";
         }
