@@ -14,8 +14,15 @@ require_once("util/Conexao.php");
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
 </head>
 <body class="bg-dark text-white">
+<div id="header" class="container mt-4 mb-4">
+    <div class="d-flex flex-column flex-md-row align-items-center justify-content-center gap-3">
+        <img src="ChatGPT_Image_27_de_jun._de_2025__14_18_49-removebg-preview.png" alt="Logo" style="max-height: 100px;">
+        <h1 class="text-center m-0">Listagem das música de quem não pode ir para igreja</h1>
+    </div>
+</div>
+
+    <div id="container">
     <div class="container mt-4">
-        <h1 class="text-center mb-4">Lista de Músicas</h1>
         <div class="row">
 
             <?php

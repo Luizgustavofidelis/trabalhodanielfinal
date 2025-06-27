@@ -75,17 +75,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <!DOCTYPE html>
 <html lang="pt-br">
-<link rel="stylesheet" href="style/estilo.css">
-
-
 <head>
     <meta charset="UTF-8">
-    <title>Cadastrar Música</title>
+    <title>Músicas de quem não pode ir para igreja</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style/estilo.css">
 </head>
 
 <body>
-    <h1>Listagem das musicas</h1>
+<div id="header" class="container mt-4 mb-4">
+    <div class="d-flex flex-column flex-md-row align-items-center justify-content-center gap-3">
+        <img src="1e0c2610-bd29-4dea-8e9d-eb3931a6632a-removebg-preview.png" alt="Logo" style="max-height: 100px;">
+        <h1 class="text-center m-0">Músicas de quem não pode ir para igreja</h1>
+    </div>
+</div>
 
+</div>
+
+    <div id="container">
     <table border="1">
         <tr>
             <th>titulo</th>
@@ -153,7 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <span style="color:red"><?= $errorMessages['data_lancamento'] ?></span>
         <br><br>
 
-        <label for="duracao">Duração (em segundos):</label><br>
+        <label for="duracao">Duração (em minutos):</label><br>
         <input type="number" name="duracao" id="duracao" value="<?= $duracao ?>">
         <span style="color:red"><?= $errorMessages['duracao'] ?></span>
         <br><br>
@@ -166,6 +173,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <button type="submit">Gravar</button>
         <a href="card.php" class="botao-card">Ir para o Card</a>
     </form>
+        </div>
     <script src=" js/validacao.js"></script>
 </body>
 
