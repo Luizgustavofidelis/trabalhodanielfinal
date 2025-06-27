@@ -7,7 +7,7 @@
     $con = Conexao::getConexao();
     //print_r($con);
     
-    //Buscar os livros já salvos na base de dados
+    //Buscar as musicas já salvos na base de dados
     $sql = "DELETE FROM Musica WHERE id = ?";
     $stm = $con->prepare($sql);
     $stm->execute([$_GET["excluir"]]);

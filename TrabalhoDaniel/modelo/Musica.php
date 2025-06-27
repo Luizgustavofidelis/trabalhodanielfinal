@@ -183,7 +183,7 @@ class Musica
                         'pagode' => 'Pagode'
                 ];
 
-                return $generos[$valor] ?? 'Gênero não encontrado';
+                return $generos[$valor] ?? 'erro';
         }
         public function obterTipoLancamento($valor)
         {
@@ -195,6 +195,6 @@ class Musica
                         'live' => 'Ao Vivo'
                 ];
 
-                return $tipos[$valor] ?? 'Tipo de lançamento não encontrado';
+                return $tipos[$valor] ?? 'erro';
         }
 }
